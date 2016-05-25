@@ -115,10 +115,10 @@ write(const std::string& _filename, BaseExporter& _be, Options _opt, std::stream
     }
 
     //remove the file extension
-    dot = _filename.find_last_of(".");
+    dot = objName_.find_last_of(".");
 
     if(dot != std::string::npos)
-      objName_ = objName_.substr(0,dot-1);
+      objName_ = objName_.substr(0,dot);
   }
 
   bool result = write(out, _be, _opt, _precision);
@@ -184,7 +184,7 @@ writeMaterial(std::ostream& _out, BaseExporter& _be, Options _opt) const
     for (size_t i=0; i < materialA_.size(); i++){
       _out << "newmtl " << "mat" << i << '\n';
       _out << "Ka 0.5000 0.5000 0.5000" << '\n';
-      _out << "Kd " << materialA_[i][0] << materialA_[i][1] << materialA_[i][2] << '\n';;
+      _out << "Kd " << materialA_[i][0] << ' ' << materialA_[i][1] << ' ' << materialA_[i][2] << '\n';
       _out << "Tr " << materialA_[i][3] << '\n';
       _out << "illum 1" << '\n';
     }
@@ -192,7 +192,7 @@ writeMaterial(std::ostream& _out, BaseExporter& _be, Options _opt) const
     for (size_t i=0; i < material_.size(); i++){
       _out << "newmtl " << "mat" << i << '\n';
       _out << "Ka 0.5000 0.5000 0.5000" << '\n';
-      _out << "Kd " << material_[i][0] << material_[i][1] << material_[i][2] << '\n';;
+      _out << "Kd " << material_[i][0] << ' ' << material_[i][1] << ' ' << material_[i][2] << '\n';
       _out << "illum 1" << '\n';
     }
 

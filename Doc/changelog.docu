@@ -6,9 +6,44 @@
 
 <!-- --------------------------------------------------------------------- -->
 
+<tr valign=top><td><b>6.1</b> (?/?/?)</td><td>
 
-<tr valign=top><td><b>6.0</b> (?/?/?)</td><td>
+<b>General</b>
+<ul>
+<li>New logo for OpenMesh and switched to VCI schema</li>
+</ul>
 
+<b>Core</b>
+<ul>
+<li>PolyMesh: Copy per-halfedge and per-face properties to new elments during triangulation (Thanks to Max Limper for the patch)</li>
+</ul>
+
+<b>IO</b>
+<ul>
+<li>PLY Reader: Fixed binary reader errors in ply reader. (Thanks to Michael Kremer for the patch)</li>
+</ul>
+
+<b>Build System</b>
+<ul>
+<li>Some fixes for min gw (Thanks to Xan for the patch)</li>
+</ul>
+
+</tr>
+
+
+<tr valign=top><td><b>6.0</b> (2016/29/04)</td><td>
+
+<b>Core</b>
+<ul>
+<li>Added a couple of methods to enable more efficient adding of batches of vertices (Without resizing property vectors) </li>
+</ul>
+
+<b>IO</b>
+<ul>
+<li>Obj reader: added texCoord3d functions to objloader</li>
+<li>PLY Reader: Don't emit warning for every complex face but warn only once in the end.</li>
+<li>Importer: Integrate non-manifold faces while importing and not at the end. Fixes missing properties on non-manifolds. (Thanks to Max Limper for the patch, Merge Request 51)</li>
+</ul>
 
 <b>VectorT</b>
 <ul>
@@ -21,6 +56,7 @@
 <ul>
 <li>Added several unittests for VectorT</li>
 <li>Added Benchmarks for VectorT</li>
+<li>Added test for property iterators</li>
 </ul>
 
 <b>Build System</b>
@@ -28,8 +64,60 @@
 <li>Updated c++11 ifdefs to use c++11 (starting with VS1015)</li>
 </ul>
 
+<b>Python Interface</b>
+<ul>
+<li>Fixed segfault in decimater due to a bad pointer</li>
+</ul>
+
+<b>Utils</b>
+<ul>
+<li>Add factory functions for creating PropertyManagers without restating the mesh type in C++11</li>
+</ul>
+
+
+<b>Apps</b>
+<ul>
+<li>VDPM Analyzer: Fixed VS2015 internal compiler error with C++11</li>
+</ul>
+
 </tr>
 
+
+<tr valign=top><td><b>5.2</b> (2016/04/28)</td><td>
+
+<b>Core</b>
+<ul>
+<li>Fixed ugly typo in __decrement function of Basehandle. Seems to be unused in the rest of the code.</li>
+<li>drop VectorDimensionsT metaprogram in favor of vector_traits in normal computation function</li>
+</ul>
+
+
+<b>IO</b>
+<ul>
+<li>PLY Reader: Fixed CR LF newline handling for binary file headers.</li>
+<li>Obj writer: Fix OBJ material files and face color (Thanks to Sven-Kristofer Pilz for the patch) </li>
+<li>Obj writer: Fix OBJ writer bug file extension removal (Thanks to Katharina Breininger for the patch) </li>
+
+</ul>
+
+<b>Tools</b>
+<ul>
+<li>Decimater: Added missing preprocess collapse call in size_t DecimaterT<Mesh>::decimate(size_t _n_collapses)  (Thanks to Andrej Ivanis for the hint)</li>
+</ul>
+
+
+
+<b>Build System</b>
+<ul>
+<li>Fixed Typo in cmake install for smoother (Thanks to Takashi Michikawa for the fix).</li>
+</ul>
+
+<b>Documentation</b>
+<ul>
+<li>Fixed order of smoother parameters in the documentation. (Thanks to Takashi Michikawa for the info).</li>
+</ul>
+
+</tr>
 
 
 <tr valign=top><td><b>5.1</b> (2015/17/12)</td><td>
@@ -52,6 +140,7 @@
 <b>IO</b>
 <ul>
 <li>OMWriter: fix crash in OMWriter when writing an empty mesh with colors</li>
+<li>Binary writers: Fixed double swap in string specialization. Added Unittest.</li>
 </ul>
 
 <b>VectorT</b>
